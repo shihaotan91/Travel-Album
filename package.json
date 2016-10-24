@@ -1,0 +1,23 @@
+{
+  "name": "donut-shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "dotenv": "^2.0.0",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "express-ejs-layouts": "^2.2.0",
+    "mongoose": "^4.6.5",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.11.0",
+    "path": "^0.12.7"
+  }
+}

@@ -1,0 +1,13 @@
+<h1 class = "your">Your friends that've signed up</h1>
+
+<ul id="userList">
+<% allUsers.forEach(function(user) { %>
+  <li class="friendsList">
+      <hr>
+      <%= user.name %><br>
+      <%= user.email %><br>
+      <%= user.password %><br>
+  </li>
+<% }) %>
+</ul>
+</form>

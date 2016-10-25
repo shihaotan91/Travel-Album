@@ -11,6 +11,7 @@ function authCheck (req, res, next) {
 
   if (req.isAuthenticated()) {
     req.flash('signupMessage', '')
+    console.log(req.user)
     return res.redirect('/user/profile')
   } else {
     return next()
@@ -43,6 +44,7 @@ router.route('/signup')
 
 router.route('/login')
       .get(authCheck, function (req, res) {
+        // console.log("dkhsbdnlkasjdbksjn")
         res.render('user/login', { message: req.flash('loginMessage') })
       })
       .post(passport.authenticate('local-login', {

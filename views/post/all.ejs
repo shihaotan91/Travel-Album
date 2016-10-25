@@ -1,0 +1,10 @@
+<ul class="photoList">
+<% postArr.forEach(function(post) { %>
+  <li>
+      <hr>
+      <img class = "allImages" src="<%= post.url %>" width="900"><br>
+      <h2 class="country">Photo Taken at: <%= post.country %></h2><br>
+  </li>
+<% }) %>
+</ul>
+</form>

@@ -125,3 +125,38 @@
   padding: 4px;
   text-align: center;
 }
+
+.success {
+  text-align: center;
+}
+
+.post {
+  text-align: center;
+  font-size: 20px;
+  padding-bottom: 200px;
+}
+
+.logout {
+  font-size: 30px;
+  color: red;
+  margin-left: 530px;
+}
+
+.newPost {
+  width: 60%;
+  margin-left: 100px;
+  margin-top: 50px;
+  display: inline-block;
+}
+
+.photoImage {
+  float: left
+  width: 300px;
+  height: 300px;
+  margin-left: -150px;
+}
+
+.sharing {
+  margin-left: -65px;
+  padding-bottom: 10px;
+}

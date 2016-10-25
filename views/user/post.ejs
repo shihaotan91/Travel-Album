@@ -1,0 +1,35 @@
+  <div class="row">
+    <div class="col-md-8">
+
+      <form class ="loginUser" action="/user/login" method="post">
+
+      <div class="form-group">
+        <label for="ImageURL">Image URL</label>
+        <input type="text" class="form-control" id="ImageURL" name="post[url]" placeholder="Image URL">
+        <br>
+
+        <label for="country">Country</label>
+        <input type="text" class="form-control" id="country" name="post[country]" placeholder="Where did you take this photo?">
+        <br>
+
+        <label for="who">Who/What is in this picture?</label>
+        <select class="form-control" id="who"  name="post[who]" placeholder="Who/What is in this picture?">
+        <option>Me</option>
+        <option>Friends</option>
+        <option>Strangers</option>
+        <option>Animals</option>
+        </select>
+
+    </div>
+    <button type="submit" class="btn btn-default">Share my photo!</button>
+    </form>
+
+    </div>
+
+    <div class="col-md-4">
+
+      <h2 class="sharing">Sharing is caring</h2>
+
+      <img src="../images/photo.png" class="photoImage">
+
+    </div>

@@ -16,7 +16,11 @@ var postSchema = mongoose.Schema({
     user_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-    }
+    },
+    comment_id: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Comment',
+    }]
 })
 
 var Post = mongoose.model('Post', postSchema)

@@ -55,6 +55,8 @@ var user_api_routes = require('./routes/user/user_api')
 
 var post = require('./routes/post/post')
 
+// var comment = require('./routes/post/comment')
+
 require('./config/passport')(passport)
 
 app.use('/', home)
@@ -62,6 +64,8 @@ app.use('/user', user)
 app.use('/api/user', user_api_routes)
 
 app.use('/post', post)
+
+// app.use('/comment', comment)
 
 app.listen(3000)
 console.log('Server running at http://localhost:' + port + '/')

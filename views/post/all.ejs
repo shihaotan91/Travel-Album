@@ -3,8 +3,19 @@
   <li>
       <hr>
       <img class = "allImages" src="<%= post.url %>" width="900"><br>
-      <h2 class="country">Photo Taken at: <%= post.country %></h2><br>
+      <h3 class="country">Photo Taken at: <%= post.country %></h3>
+      <% if(post.user_id) { %>
+      <h3 class="country">Photo Taken By: <%= post.user_id.name%></h3>
+      <% } %>
   </li>
+
+<form class ="commentUser" action="/post/<%= post.id %>" method="post">
+
+  <div class="comment">
+      <label for=""></label>
+      <input type="text" class="form-control" id="comment"   name="comment[comment]" placeholder="Say something!">
+      <button type="submit" class="btn  btn-default">Comment</button>
+    </div>
+</form>
 <% }) %>
 </ul>
-</form>

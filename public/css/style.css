@@ -1,5 +1,5 @@
 .navbar {
-  background-color: black;
+  background-color: white;
   border-radius: 0px;
   margin-top: 20px;
   margin-left: 95px;
@@ -7,15 +7,19 @@
   height: 65px;
 }
 
-.home {
+.front {
+  margin-left: 320px;
+}
+
+/*.home {
   width: 100%;
   height: 700px;
   background-image: url("http://i.imgur.com/xZPzWZu.jpg");
   background-size: cover;
   opacity: 0.6
-}
+}*/
 
-.homeBox {
+/*.homeBox {
   width: 300px;
   height: 300px;
   background-color: white;
@@ -23,9 +27,9 @@
   padding-top: 100px;
   display: inline-block;
   opacity: 0.7
-}
+}*/
 
-.findBox {
+/*.findBox {
   width: 300px;
   height: 36px;
   background-color: white;
@@ -33,47 +37,47 @@
   margin-right: 140px;
   margin-top: 55px;
   opacity: 0.7
-}
+}*/
 
-.list {
+/*.list {
   font-size: 30px;
   list-style: none;
-}
+}*/
 
-.type {
+/*.type {
   color: black;
-}
+}*/
 
-.search {
+/*.search {
  margin-top: -0.5px;
-}
+}*/
 
 .login {
   margin-top: 6px;
   margin-right: 70px;
   font-size: 20px;
-  color: white;
+  color: black;
 }
 
 .signup {
   margin-top: 6px;
   font-size: 20px;
   margin-right: 15px;
-  color: white;
+  color: black;
 }
 
 .postBar {
   margin-top: 6px;
   font-size: 20px;
   margin-right: 15px;
-  color: white;
+  color: black;
 }
 
 .navbar-brand {
   margin-top: 8px;
   font-size: 20px;
   padding-left: 100px;
-  color: white;
+  color: black;
 }
 
 .createUser {

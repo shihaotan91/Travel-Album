@@ -70,9 +70,13 @@ router.get('/profile', function(req, res) {
   res.render('user/profile')
 })
 
+router.get('/error', function(req, res) {
+  res.render('user/error')
+})
+
 router.get('/logout', function (req, res) {
   req.logout()
-  res.redirect('/user/login')
+  res.redirect('/')
 })
 
 

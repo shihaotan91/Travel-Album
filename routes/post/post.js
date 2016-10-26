@@ -9,7 +9,7 @@ function reverseCheck (req, res, next) {
   if (req.isAuthenticated()) {
     return next()
   } else {
-    return res.redirect('/user/login')
+    return res.redirect('/user/error')
   }
 }
 

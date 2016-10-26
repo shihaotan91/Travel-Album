@@ -34,7 +34,19 @@
 
 .comments {
   line-height: 8px;
+  display: inline-block;
 }
+
+.error {
+  text-align:center;
+  padding-top: 20px;
+}
+
+.errorImage {
+margin-left: 480px;
+}
+
+
 
 /*#commentSubmit {
   float:right;

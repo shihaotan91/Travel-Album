@@ -1,4 +1,4 @@
-<img class = "allEach" src="<%= foundPost.url %>" width="900"><br>
+<img class = "allEach" src="<%= foundPost.url %>" height="595"><br>
 <h3 class="country">Photo Taken at: <%= foundPost.country %></h3>
 <h3 class="country">Photo Taken By: <%= foundPost.user_id.name %></h3>
 
@@ -6,7 +6,7 @@
 <ul id="commentBox">
       <% commentArr.forEach(function(comment) { %>
         <div class="four columns">
-          <p class="comments"> <%= comment.comment %> <p>
+          <%= foundPost.user_id.name %> says: <p class="comments"> <%= comment.comment %><p>
        </div>
          <% }) %>
      </ul>

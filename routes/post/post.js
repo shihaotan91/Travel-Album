@@ -19,7 +19,7 @@ router.route('/new')
   })
 
 
-router.get('/all', function(req, res) {
+router.get('/:id', function(req, res) {
      Post.find({})
     .populate('user_id')
     // .populate('comment_id')
@@ -29,7 +29,8 @@ router.get('/all', function(req, res) {
           // console.log(postArr)
 
         res.render('post/all', {
-          postArr: postArr
+          postArr: postArr,
+          // commentArr: commentArr
           // commentArr: commentArr
           // username:username,
         // })
@@ -37,10 +38,26 @@ router.get('/all', function(req, res) {
     })
   })
 
+//   router.get('/all', function (req, res) {
+//   Post.findAll({}, function (err, foundPost) {
+//     // console.log("lalallala")
+//     if (err) console.log(err)
+//     Comment.findAll({post_id : req.params.id}, function(err, commentArr){
+//       // console.log(commentArr)
+//       res.render('post/all', {
+//         commentArr: commentArr
+//       })
+//     })
+//   })
+// })
 
-router.get('/all', function (req, res) {
+router.get('/:id', function (req, res) {
   res.render('post/all')
 })
+
+// router.get('/:id', function (req, res) {
+//   res.redirect('/post/all')
+// })
 
 router.post('/new', function (req,res) {
     var newPost = new Post ({
@@ -64,23 +81,23 @@ router.post('/new', function (req,res) {
       })
    })
 
-   router.get('/:id', function(req, res) {
-        Comment.find({})
-       .populate('user_id')
-       // .populate('comment_id')
-
-           .exec(function(err, commentArr) {
-
-             // console.log(postArr)
-
-           res.render('post/all', {
-             commentArr: commentArr
-             // commentArr: commentArr
-             // username:username,
-           // })
-         })
-       })
-     })
+  //  router.get('/:id', function(req, res) {
+  //       Comment.find({})
+  //      .populate('user_id')
+  //      // .populate('comment_id')
+   //
+  //          .exec(function(err, commentArr) {
+   //
+  //            // console.log(postArr)
+   //
+  //          res.render('post/all', {
+  //            commentArr: commentArr
+  //            // commentArr: commentArr
+  //            // username:username,
+  //          // })
+  //        })
+  //      })
+  //    })
 
 
 
@@ -89,43 +106,17 @@ router.post('/new', function (req,res) {
          comment: req.body.comment.comment,
          post_id: req.params.id,
          user_id: req.user.id,
-         // username: req.user.name
        })
-
        //  console.log(req.user.name)
 
         newComment.save(function (err) {
          if (err) throw new Error(err)
 
-         res.redirect('/post/all')
+        //  res.redirect('/post/all')
          // console.log(req.user)
 
         })
       })
 
-
-      // })
-      // .populate('user_id', 'name')
-      // .exec(function (err, story) {
-      //   if (err) return handleError(err);
-      //
-      //   console.log('The name is', User.user_id.name);
-
-
-
-  // Post.create(req.body.post,
-  // function(err, newPost){
-  //   res.redirect('/post/all')
-  //   console.log(req.user)
-
-//     newAnimal.save(function (err) {
-//       if (err) throw new Error(err)
-//     })
-
-//   .post('/', function (req, res) {
-//   Post.create(req.body.post, function (err, newPost) {
-//     res.redirect('/')
-//   }
-// }))
 
 module.exports = router

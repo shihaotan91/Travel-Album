@@ -17,10 +17,10 @@ var postSchema = mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
     },
-    comment_id: [{
+    comment_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Comment',
-    }]
+    }
 })
 
 var Post = mongoose.model('Post', postSchema)

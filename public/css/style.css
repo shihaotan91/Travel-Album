@@ -11,6 +11,35 @@
   margin-left: 320px;
 }
 
+#commentButton {
+  margin-left: 500px;
+  background-color: black;
+}
+
+.allEach {
+  margin-left: 132px;
+}
+
+#commentForm {
+  width: 40%;
+  display: inline-block;
+  margin-left: 300px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+#commentBox {
+  text-align: center;
+}
+
+.comments {
+  line-height: 8px;
+}
+
+/*#commentSubmit {
+  float:right;
+}*/
+
 /*.home {
   width: 100%;
   height: 700px;
@@ -189,7 +218,7 @@
   font-size: 20px;
 }
 
-.comment {
+/*.comment {
   margin-left: 250px;
   width: 50%;
   display: inline-block;
@@ -198,4 +227,4 @@
 .btn btn-default {
   display: inline-block;
   float: left;
-}
+}*/

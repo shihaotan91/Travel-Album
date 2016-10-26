@@ -8,6 +8,8 @@
       <h3 class="country">Photo Taken By: <%= post.user_id.name%></h3>
       <% } %>
   </li>
+  <br>
+  <a href="/post/<%= post._id %>"> <button class="btn btn-default btn-primary" href="/posts/<%= post._id%>" role="button" id="commentButton">Comment</button></a>
 
 <% }) %>
 </ul>

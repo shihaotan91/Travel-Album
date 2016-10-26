@@ -13,30 +13,70 @@ function reverseCheck (req, res, next) {
   }
 }
 
-router.route('/new')
-  .get(reverseCheck, function (req, res) {
-    res.render('post/new')
-  })
-
-
-router.get('/:id', function(req, res) {
+router.get('/all', function(req, res) {
      Post.find({})
     .populate('user_id')
-    // .populate('comment_id')
-
         .exec(function(err, postArr) {
 
           // console.log(postArr)
 
         res.render('post/all', {
           postArr: postArr,
-          // commentArr: commentArr
-          // commentArr: commentArr
-          // username:username,
-        // })
       })
     })
   })
+
+router.route('/new')
+  .get(reverseCheck, function (req, res) {
+    res.render('post/new')
+  })
+
+//   router.get('/all', function (req, res) {
+//   Post.find({}, function (err, postArr) {
+//     res.render('post/all', {
+//       postArr: postArr,
+//     })
+//   })
+// })
+
+
+router.get('/:id', function (req, res) {
+  Post.findById(req.params.id)
+    .populate('user_id', 'name')
+    .exec(function (err, foundPost) {
+    if (err) console.log(err)
+    Comment.find({post_id : req.params.id}, function(err, commentArr){
+      res.render('post/each', {
+        foundPost: foundPost,
+        commentArr: commentArr
+      })
+    })
+  })
+})
+
+
+
+
+
+
+// router.get('/:id', function(req, res) {
+//      Post.find({})
+//     .populate('user_id')
+//     // .populate('comment_id')
+//
+//         .exec(function(err, postArr) {
+//
+//           // console.log(postArr)
+//
+//         res.render('post/all', {
+//           postArr: postArr,
+//           // commentArr: commentArr
+//           // commentArr: commentArr
+//           // username:username,
+//         // })
+//       })
+//     })
+//   })
 
 //   router.get('/all', function (req, res) {
 //   Post.findAll({}, function (err, foundPost) {
@@ -51,9 +91,9 @@ router.get('/:id', function(req, res) {
 //   })
 // })
 
-router.get('/:id', function (req, res) {
-  res.render('post/all')
-})
+// router.get('/:id', function (req, res) {
+//   res.render('post/all')
+// })
 
 // router.get('/:id', function (req, res) {
 //   res.redirect('/post/all')
@@ -76,7 +116,6 @@ router.post('/new', function (req,res) {
 
       res.redirect('/post/all')
       // console.log(req.user)
-
 
       })
    })
@@ -112,7 +151,7 @@ router.post('/new', function (req,res) {
         newComment.save(function (err) {
          if (err) throw new Error(err)
 
-        //  res.redirect('/post/all')
+         res.redirect('/post/' + req.params.id)
          // console.log(req.user)
 
         })

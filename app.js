@@ -79,7 +79,7 @@ require('./config/passport')(passport)
 
 app.use('/', home)
 app.use('/user', user)
-app.use('/api/user', user_api_routes)
+// app.use('/api/user', user_api_routes)
 
 app.use('/post', post)
 

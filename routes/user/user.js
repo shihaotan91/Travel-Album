@@ -6,8 +6,9 @@ var User = require('../../models/user')
 
 
 function authCheck (req, res, next) {
-  // if req.isAuthenticated is false, then let it be
-  // if it's true, redirect back to profile
+  // if user is not authenticated let him proceed
+  // if user is authenticated then return back to profile page
+  //kinda solved problem with the login middleware in app.js
 
   if (req.isAuthenticated()) {
     req.flash('signupMessage', '')
@@ -18,9 +19,10 @@ function authCheck (req, res, next) {
   }
 }
 
+//getting list of people with signed up
 router.get('/list', function (req, res) {
   User.find({}, function (err, allUsers) {
-    console.log(allUsers)
+    // console.log(allUsers)
     res.render('user/list', {
       allUsers: allUsers
     })
@@ -28,6 +30,7 @@ router.get('/list', function (req, res) {
 })
 
 router.route('/signup')
+//checking if user is already in session. if in session, don't let user in the signup/login page
       .get(authCheck, function (req, res) {
         User.find({}, function (err, allUsers) {
           res.render('user/signup', {
@@ -43,6 +46,7 @@ router.route('/signup')
       }))
 
 router.route('/login')
+//checking if user is already in session. if in session, don't let user in the signup/login page
       .get(authCheck, function (req, res) {
         // console.log("dkhsbdnlkasjdbksjn")
         res.render('user/login', { message: req.flash('loginMessage') })
@@ -53,32 +57,19 @@ router.route('/login')
         failureFlash: true
       }))
 
-
-// router.get('/signup', function(req, res) {
-//   res.render('user/signup')
-// })
-//
-// router.get('/login', function(req, res) {
-//   res.render('user/login')
-// })
-
-router.get('/list', function(req, res) {
-  res.render('user/list')
-})
-
+//creating profile page
 router.get('/profile', function(req, res) {
   res.render('user/profile')
 })
 
-// router.get('/myphotos', function(req, res) {
-//   res.render('user/myphotos')
-// })
-
+//creating error page
 router.get('/error', function(req, res) {
   res.render('user/error')
 })
 
+//creating logout link
 router.get('/logout', function (req, res) {
+//.logout is a default method to exit current session. not function is not defined anywhere else
   req.logout()
   res.redirect('/')
 })

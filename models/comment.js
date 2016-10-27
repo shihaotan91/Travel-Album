@@ -1,5 +1,7 @@
 var mongoose = require('mongoose')
 
+//took out user_id to allow anonymous commenting
+
 var commentSchema = mongoose.Schema({
     comment: {
       type: String,

@@ -2,6 +2,7 @@ var LocalStrategy = require('passport-local').Strategy
 
 var User = require('../models/user')
 
+//serailizeUser is used to store userID into the session
 module.exports = function (passport) {
   passport.serializeUser(function (user, done) {
     done(null, user.id)
@@ -13,6 +14,7 @@ module.exports = function (passport) {
     })
   })
 
+//using local strategy to check if email is already in database
   passport.use('local-signup', new LocalStrategy({
     usernameField: 'user[email]',
     passwordField: 'user[password]',
@@ -21,8 +23,7 @@ module.exports = function (passport) {
     console.log("hello world")
     // the authentication flow on our local auth routes
     User.findOne({'email': email }, function (err, foundUser) {
-      // if user is found, dont create new user
-      // if user is not found, create new user
+  //if user is found flash message. if user isn't found, create user.
       console.log(foundUser)
       console.log("something")
       if (err) return next(err)
@@ -38,6 +39,7 @@ module.exports = function (passport) {
     })
   }))
 
+//using local strategy to authentic user with email and password field
   passport.use('local-login', new LocalStrategy({
     usernameField: 'user[email]',
     passwordField: 'user[password]',
@@ -49,17 +51,19 @@ module.exports = function (passport) {
     User.findOne({ 'email': email }, function (err, foundUser) {
       if (err) return next(err)
 
-    console.log(foundUser)
-      // if cannot find use by email, return to route with flash message
+    //if user isn't found, flash message
+
       if (!foundUser)
         return next(null, false, req.flash('loginMessage', 'No user found with this email'))
 
       foundUser.authenticate(password, function (err, authenticated) {
         if (err) return next(err)
 
+        //if user is found with correct password, let the person login
         if (authenticated) {
           return next(null, foundUser, req.flash('loginMessage', ''))
         } else {
+          //if user is found but with wrong password, flash message
           return next(null, false, req.flash('loginMessage', 'Password don\'t match'))
         }
       })

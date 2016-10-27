@@ -16,11 +16,15 @@ var userSchema = mongoose.Schema({
     }
 })
 
+//this entire part is to encrypt and save the "hashed" password
+
 userSchema.pre('save', function (next) {
-  // console.log('before save hash the password')
-  // console.log(this)
 
   var user = this
+
+//salt refers to how many times a random data is passed to "hash" the password. default
+//default times for bcrypt is 10
+// do not go over 15salts, system will hang
 
   bcrypt.genSalt(5, function (err, salt) {
     if (err) return next(err)
@@ -36,6 +40,7 @@ userSchema.pre('save', function (next) {
   })
 })
 
+//reverse checking if the hash password = signup password
 userSchema.methods.authenticate = function (givenPassword, callback) {
   // console.log('given password is ' + givenPassword)
   // console.log('saved password is ' + this.password)

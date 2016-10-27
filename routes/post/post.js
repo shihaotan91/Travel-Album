@@ -5,6 +5,8 @@ var Post = require('../../models/post')
 var User = require('../../models/user')
 var Comment = require('../../models/comment')
 
+//if user is authenticated, proceed. if user is not authenticated, redirect to error page.
+
 function reverseCheck (req, res, next) {
   if (req.isAuthenticated()) {
     return next()
@@ -13,6 +15,7 @@ function reverseCheck (req, res, next) {
   }
 }
 
+//rendering all post on /all page with postArr array
 router.get('/all', function(req, res) {
      Post.find({})
     .populate('user_id')
@@ -24,6 +27,7 @@ router.get('/all', function(req, res) {
     })
   })
 
+//same thing but in Grid format
   router.get('/allGrid', function(req, res) {
        Post.find({})
       .populate('user_id')
@@ -35,22 +39,20 @@ router.get('/all', function(req, res) {
       })
     })
 
+//performing reverse check on /post/new page
 router.route('/new')
   .get(reverseCheck, function (req, res) {
     res.render('post/new')
   })
 
-  router.route('/new')
-    .get(reverseCheck, function (req, res) {
-      res.render('post/new')
-    })
-
+//performing reverse check on /post/myphotos page
   router.route('/myphotos')
     .get(reverseCheck, function (req, res) {
      Post.find({
+    //finding specific user id to display photos ONLY posted by that ID. for profile page
      user_id: req.user._id
   }, function(err, allPhotos) {
-    // console.log(allListings)
+    // rendering specific photos by logged in user
     res.render('post/myphotos', {
       user: req.user.name,
       allPhotos: allPhotos,
@@ -58,18 +60,19 @@ router.route('/new')
   })
 });
 
+//find photos by ID for delete function
 router.delete('/myphotos/:id', function(req, res) {
 Post.findByIdAndRemove(req.params.id, function(err, allPosts){
     if (err) { throw new Error (err)
-      // console.log("cannot delete")
+      // console.log("test test error")
       res.render('/post/myphotos')
     } else {
-      // console.log("deleted")
       res.redirect('/post/myphotos')
     }
   })
 })
 
+//find photos by ID for edit function
 router.get('/:id/edit', function(req, res) {
    Post.findById(req.params.id, function(err, foundPost) {
      res.render('post/edit', {
@@ -79,9 +82,9 @@ router.get('/:id/edit', function(req, res) {
  })
 })
 
+//find photos by ID for edit function
 router.put('/:id/edit', function(req, res) {
  var editPost = req.body.post;
- // console.log("new listing: " + newestListing);
  Post.findByIdAndUpdate(req.params.id, editPost, function(err, post) {
    if (err) throw new Error(err);
    res.redirect('/post/myphotos');
@@ -89,10 +92,12 @@ router.put('/:id/edit', function(req, res) {
 })
 
 
-
+//populate the user field in POST and save the username to it. So it can display who is the person that took the picture.
 router.get('/:id', function (req, res) {
   Post.findById(req.params.id)
+  //.populate has two field, one is to choose the foreign key to populate, another is to choose the specific property in foreign key
     .populate('user_id', 'name')
+  //RMB TO EXEC after populating if not population wont work
     .exec(function (err, foundPost) {
     if (err) console.log(err)
     Comment.find({post_id : req.params.id}, function(err, commentArr){
@@ -104,16 +109,14 @@ router.get('/:id', function (req, res) {
   })
 })
 
-
-
+//creating new post using the .save method
+//.create method DOESN'T work because you need to req.user.id.
 router.post('/new', function (req,res) {
     var newPost = new Post ({
       url: req.body.post.url,
       country: req.body.post.country,
       when: req.body.post.when,
       user_id: req.user.id,
-      // comment_id: req.comment.id,
-      // username: req.user.name
     })
 
     //  console.log(req.user.name)
@@ -127,6 +130,7 @@ router.post('/new', function (req,res) {
       })
    })
 
+ //creating new comment and referencing it to the postID
    router.post('/:id', function (req,res) {
      var newComment = new Comment ({
          name: req.body.comment.name,

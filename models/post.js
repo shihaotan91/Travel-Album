@@ -1,5 +1,7 @@
 var mongoose = require('mongoose')
 
+//changed drop down list of 'who' with when with Number type
+
 var postSchema = mongoose.Schema({
     url: {
       type: String,

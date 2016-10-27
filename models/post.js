@@ -9,7 +9,7 @@ var postSchema = mongoose.Schema({
       type: String,
       required: true,
     },
-    who: {
+    when: {
       type: String,
       required: true,
     },

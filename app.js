@@ -50,6 +50,8 @@ app.use(methodOverride(function(req, res){
  }
 }))
 
+app.use(methodOverride('_method'))
+
 app.use(passport.initialize())
 app.use(passport.session())
 

@@ -54,6 +54,26 @@ Post.findByIdAndRemove(req.params.id, function(err, allPosts){
   })
 })
 
+router.get('/:id/edit', function(req, res) {
+   Post.findById(req.params.id, function(err, foundPost) {
+     res.render('post/edit', {
+       foundPost: foundPost,
+       user: req.user.name,
+   })
+ })
+})
+
+router.put('/:id/edit', function(req, res) {
+ var editPost = req.body.post;
+ // console.log("new listing: " + newestListing);
+ Post.findByIdAndUpdate(req.params.id, editPost, function(err, post) {
+   if (err) throw new Error(err);
+   res.redirect('/post/myphotos');
+ })
+})
+
+
+
 router.get('/:id', function (req, res) {
   Post.findById(req.params.id)
     .populate('user_id', 'name')
@@ -74,7 +94,7 @@ router.post('/new', function (req,res) {
     var newPost = new Post ({
       url: req.body.post.url,
       country: req.body.post.country,
-      who: req.body.post.who,
+      when: req.body.post.when,
       user_id: req.user.id,
       // comment_id: req.comment.id,
       // username: req.user.name

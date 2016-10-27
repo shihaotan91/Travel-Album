@@ -11,20 +11,23 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <%# <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">%>
         <%# <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>%>
-      </button>
-      <a class="navbar-brand" href="/">WDI6 TRAVEL ALBUM</a>
+      <%# </button>%>
+      <%# <ul class="nav navbar-nav navbar-left">%>
+      <ul class="nav navbar-nav navbar-left" id="left">
+      <li class="top"><a class="profile" href="/post/myphotos">Profile</a></li>
+      <li class="top"><a href="/post/all" class="all">Photos</a></li>
+      <ul>
       </div>
 
       <ul class="nav navbar-nav navbar-right">
-      <li><a href="/post/all" class="postBar">Photos</a></li>
-      <li><a href="/post/new" class="postBar">Post</a></li>
-      <li><a href="/user/signup" class="signup">Sign Up</a></li>
-      <li><a href="/user/login" class="login">Login</a></li>
+      <li class="top"><a href="/post/new" class="postBar">Post</a></li>
+      <li class="top"><a href="/user/signup" class="signup">Sign Up</a></li>
+      <li class="top"><a href="/user/login" class="login">Login</a></li>
       </ul>
 
       </nav>

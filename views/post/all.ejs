@@ -1,3 +1,5 @@
+<h4><a href="/post/allGrid" class="gridOption">View in Grid</a></h4>
+
 <ul class="photoList">
 <% postArr.forEach(function(post) { %>
   <li class="center">
@@ -6,8 +8,8 @@
       <h3 class="country">Photo Taken at: <%= post.country %></h3>
       <% if(post.user_id) { %>
       <h3 class="country">Photo Taken By: <%= post.user_id.name%></h3>
-      <% } %>
-  </li>
+      </li>
+  <% } %>
   <br>
   <a href="/post/<%= post._id %>"> <button class="btn btn-default btn-primary" href="/posts/<%= post._id%>" role="button" id="commentButton">Comment</button></a>
 

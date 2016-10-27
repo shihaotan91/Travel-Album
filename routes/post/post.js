@@ -24,10 +24,26 @@ router.get('/all', function(req, res) {
     })
   })
 
+  router.get('/allGrid', function(req, res) {
+       Post.find({})
+      .populate('user_id')
+          .exec(function(err, postArr) {
+
+          res.render('post/allGrid', {
+            postArr: postArr,
+        })
+      })
+    })
+
 router.route('/new')
   .get(reverseCheck, function (req, res) {
     res.render('post/new')
   })
+
+  router.route('/new')
+    .get(reverseCheck, function (req, res) {
+      res.render('post/new')
+    })
 
   router.route('/myphotos')
     .get(reverseCheck, function (req, res) {

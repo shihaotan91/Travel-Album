@@ -1,0 +1,5 @@
+<h4><a href="/post/all" class="allOption">View in List</a></h4>
+
+<% postArr.forEach(function(post) { %>
+      <a href="/post/<%= post._id %>"><img class ="allGridImages" src="<%= post.url %>" height="250" width="360"></a>
+<% }) %>

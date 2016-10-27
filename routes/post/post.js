@@ -144,17 +144,19 @@ router.post('/new', function (req,res) {
      var newComment = new Comment ({
          comment: req.body.comment.comment,
          post_id: req.params.id,
-         user_id: req.user.id,
+        //  user_id: req.user.id,
        })
        //  console.log(req.user.name)
 
         newComment.save(function (err) {
          if (err) throw new Error(err)
 
+       })
+          console.log("test")
          res.redirect('/post/' + req.params.id)
+
          // console.log(req.user)
 
-        })
       })
 
 

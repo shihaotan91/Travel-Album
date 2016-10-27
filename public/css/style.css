@@ -20,12 +20,25 @@
   margin-left: 132px;
 }
 
+
+#commentName {
+  width: 13%;
+  display: inline-block;
+  margin-bottom: 30px;
+  float:left;
+  margin-left: 235px;
+}
+
 #commentForm {
   width: 40%;
+  margin-bottom: 30px;
   display: inline-block;
-  margin-left: 300px;
-  margin-top: 20px;
-  margin-bottom: 50px;
+  float: left;
+}
+
+#commentSubmit {
+  float:left;
+  margin-bottom: 30px;
 }
 
 #commentBox {
@@ -33,7 +46,7 @@
 }
 
 .comments {
-  line-height: 8px;
+  line-height: 0px;
   display: inline-block;
 }
 
@@ -46,11 +59,10 @@
 margin-left: 480px;
 }
 
+.name {
+  width: 10%;
+}
 
-
-/*#commentSubmit {
-  float:right;
-}*/
 
 /*.home {
   width: 100%;

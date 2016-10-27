@@ -6,13 +6,15 @@
 <ul id="commentBox">
       <% commentArr.forEach(function(comment) { %>
         <div class="four columns">
-          <%= foundPost.user_id.name %> says: <p class="comments" id="thatComment"> <%= comment.comment %><p>
+         <%= comment.name %> says: <p class="comments"> <%= comment.comment %><p>
        </div>
          <% }) %>
      </ul>
 
-<form class="commentAJAX" id="comment123">
+<form action="/post/<%=foundPost.id%>" method="post" id="comment123">
+
+<input type="text" class="form-control" id="commentName" name="comment[name]" placeholder="Your name">
 
 <input type="text" class="form-control" id="commentForm" name="comment[comment]" placeholder="Say something!">
 
-<button class="btn btn-default btn-primary" role="button" id="commentSubmit">Comment</button>
+<button href="/posts/<%=foundPost._id%>" class="btn btn-default btn-primary" role="button" id="commentSubmit">Comment</button>

@@ -142,6 +142,7 @@ router.post('/new', function (req,res) {
 
    router.post('/:id', function (req,res) {
      var newComment = new Comment ({
+         name: req.body.comment.name,
          comment: req.body.comment.comment,
          post_id: req.params.id,
         //  user_id: req.user.id,

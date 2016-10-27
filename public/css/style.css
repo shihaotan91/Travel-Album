@@ -16,9 +16,11 @@
   background-color: black;
 }
 
-.allEach {
+/*.allEach {
   margin-left: 132px;
-}
+  margin-left: auto;
+  margin-right: auto;
+}*/
 
 
 #commentName {
@@ -226,7 +228,16 @@ margin-left: 480px;
 }
 
 .allImages {
-  margin-left: 80px;
+  margin: 0 auto;
+  padding: 0 auto;
+  border: 0 auto;
+  /*margin-right: auto;*/
+  /*margin-left: 80px;*/
+}
+
+.center {
+  /*padding: 0 100px;*/
+  text-align: center;
 }
 
 .country {

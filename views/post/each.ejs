@@ -1,12 +1,15 @@
-<img class = "allEach" src="<%= foundPost.url %>" height="595"><br>
+<li class = "center">
+<hr>
+<img class = "center" src="<%= foundPost.url %>" height="595"><br>
 <h3 class="country">Photo Taken at: <%= foundPost.country %></h3>
 <h3 class="country">Photo Taken By: <%= foundPost.user_id.name %></h3>
+</li>
 
 
 <ul id="commentBox">
       <% commentArr.forEach(function(comment) { %>
         <div class="four columns">
-         <%= comment.name %> says: <p class="comments"> <%= comment.comment %><p>
+         <%= comment.name %>says: <p class="comments"> <%= comment.comment %><p>
        </div>
          <% }) %>
      </ul>
@@ -14,7 +17,6 @@
 <form action="/post/<%=foundPost.id%>" method="post" id="comment123">
 
 <input type="text" class="form-control" id="commentName" name="comment[name]" placeholder="Your name">
-
 <input type="text" class="form-control" id="commentForm" name="comment[comment]" placeholder="Say something!">
 
 <button href="/posts/<%=foundPost._id%>" class="btn btn-default btn-primary" role="button" id="commentSubmit">Comment</button>

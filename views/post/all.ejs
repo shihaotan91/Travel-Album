@@ -5,11 +5,10 @@
   <li class="center">
       <hr>
       <img class = "allImages" src="<%= post.url %>" height="595"><br>
-      <h3 class="country">Photo Taken at: <%= post.country %></h3>
-      <% if(post.user_id) { %>
-      <h3 class="country">Photo Taken By: <%= post.user_id.name%></h3>
+      <p class="line">Photographed by <span class="red"><%=post.user_id.name%></span> at <%= post.country%>, <%= post.when%></p>
       </li>
-  <% } %>
+  <br>
+  <br>
   <br>
   <a href="/post/<%= post._id %>"> <button class="btn btn-default btn-primary" href="/posts/<%= post._id%>" role="button" id="commentButton">Comment</button></a>
 

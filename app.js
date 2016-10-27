@@ -55,6 +55,11 @@ app.use(methodOverride('_method'))
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(function (req, res, next) {
+  res.locals.login = req.isAuthenticated();
+  next();
+});
+
 app.use(flash())
 
 app.use(express.static(__dirname + '/public'))

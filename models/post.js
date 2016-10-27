@@ -10,7 +10,7 @@ var postSchema = mongoose.Schema({
       required: true,
     },
     when: {
-      type: String,
+      type: Number,
       required: true,
     },
     user_id: {

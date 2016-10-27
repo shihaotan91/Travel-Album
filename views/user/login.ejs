@@ -9,16 +9,17 @@
       <br>
 
       <label for="password">Password</label>
-      <input type="text" class="form-control" id="password"  name="user[password]" placeholder="Password">
+      <input type="password" class="form-control" id="password"  name="user[password]" placeholder="Password">
       <br>
 
   </div>
   <button type="submit" class="btn btn-default">Login</button>
   </form>
 
+  <br>
+
   <% if(message.length > 0) { %>
-  <h2>FLASH FOUND</h2>
-  <div class="alert alert-danger">
+  <div class="alert alert-danger" id="danger">
     <%= message %>
   </div>
   <% } %>

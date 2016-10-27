@@ -4,10 +4,7 @@
   <li class="center">
       <hr>
       <img class = "allImages" src="<%=post.url %>" height="595"><br>
-      <h3 class="country">Photo Taken at: <%= post.country %></h3>
-      <% if(post.user_id) { %>
-      <h3 class="country">Photo Taken By: YOU!</h3>
-      <% } %>
+      <p class="line2">Photographed by <span class="red">YOU</span> at <%= post.country%>, <%= post.when%></p>
   </li>
 
 <form class="editButton" action="/post/<%=post.id %>/edit" method="get">

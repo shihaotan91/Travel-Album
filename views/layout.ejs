@@ -19,15 +19,23 @@
       <%# </button>%>
       <%# <ul class="nav navbar-nav navbar-left">%>
       <ul class="nav navbar-nav navbar-left" id="left">
-      <li class="top"><a class="profile" href="/post/myphotos">Profile</a></li>
-      <li class="top"><a href="/post/all" class="all">Photos</a></li>
+      <% if (login) { %>
+      <li><a class="profile" href="/post/myphotos">MyPhotos</a></li>
+      <li><a href="/post/new" class="postBar">Post</a></li>
       <ul>
+      <% } %>
       </div>
 
       <ul class="nav navbar-nav navbar-right">
-      <li class="top"><a href="/post/new" class="postBar">Post</a></li>
-      <li class="top"><a href="/user/signup" class="signup">Sign Up</a></li>
-      <li class="top"><a href="/user/login" class="login">Login</a></li>
+      <li><a href="/post/all" class="all">Photos</a></li>
+      <% if (!login) { %>
+      <li><a href="/user/signup" class="signup">Sign Up</a></li>
+      <li><a href="/user/login" class="login">Login</a></li>
+      <% } %>
+      <% if (login) { %>
+      <li><a href="/user/logout" id="logout">
+      Logout</a></li>
+      <% } %>
       </ul>
 
       </nav>

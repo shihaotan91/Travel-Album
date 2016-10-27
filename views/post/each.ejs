@@ -1,10 +1,10 @@
 <li class = "center">
 <hr>
 <img class = "center" src="<%= foundPost.url %>" height="595"><br>
-<h3 class="country">Photo Taken at: <%= foundPost.country %></h3>
-<h3 class="country">Photo Taken By: <%= foundPost.user_id.name %></h3>
+<p class="line1">Photographed by <span class="red"><%=foundPost.user_id.name%></span> at <%= foundPost.country%>, <%= foundPost.when%></p>
 </li>
-
+<br>
+<br>
 
 <ul id="commentBox">
       <% commentArr.forEach(function(comment) { %>

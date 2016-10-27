@@ -13,21 +13,22 @@
       <br>
 
       <label for="password">Password</label>
-      <input type="text" class="form-control" id="password"  name="user[password]" placeholder="Password">
+      <input type="password" class="form-control" id="password"  name="user[password]" placeholder="Password">
 
   </div>
 
   <button type="submit" class="btn btn-default">Create an account</button>
+  </form>
+
+  <br>
 
   <% if(message.length > 0) { %>
-  <h3>Flash Found</h3>
-  <div class="alert alert-danger">
+  <div class="alert alert-danger" id="danger">
     <%= message %>
   </div>
   <% } %>
 
-  <a class= "friends" href="/user/list">Check out which of your friends' have already signed up!</a>
-  </form>
+  <a class="friends" href="/user/list">Check out which of your friends' have already signed up!</a>
   </div>
 
   <div class="col-md-4">

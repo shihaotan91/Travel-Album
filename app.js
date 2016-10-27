@@ -5,6 +5,7 @@ var bodyParser = require('body-parser')
 var dotenv = require('dotenv')
 var path = require('path')
 var logger = require('morgan')
+var methodOverride = require('method-override')
 
 var flash = require('connect-flash')
 var session = require('express-session')
@@ -38,6 +39,15 @@ app.use(session({
     mongooseConnection: mongoose.connection,
     autoReconnect: true
   })
+}))
+
+app.use(methodOverride(function(req, res){
+ if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+   // look in urlencoded POST bodies and delete it
+   var method = req.body._method
+   delete req.body._method
+   return method
+ }
 }))
 
 app.use(passport.initialize())

@@ -1,0 +1,17 @@
+<h1 class ="welcome">Welcome <%= user %></h1>
+
+<% allPhotos.forEach(function(post) { %>
+  <li class="center">
+      <hr>
+      <img class = "allImages" src="<%= post.url %>" height="595"><br>
+      <h3 class="country">Photo Taken at: <%= post.country %></h3>
+      <% if(post.user_id) { %>
+      <h3 class="country">Photo Taken By: YOU!</h3>
+      <% } %>
+  </li>
+  <form class="deleteButton" method="POST" action="/post/myphotos/<%=post.id%>" enctype="application/x-www-form-urlencoded">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="submit" class="btn btn-primary btn-md btn-danger">Delete</button>
+</form>
+<% }) %>
+</ul>

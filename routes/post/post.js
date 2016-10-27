@@ -18,8 +18,6 @@ router.get('/all', function(req, res) {
     .populate('user_id')
         .exec(function(err, postArr) {
 
-          // console.log(postArr)
-
         res.render('post/all', {
           postArr: postArr,
       })
@@ -31,14 +29,30 @@ router.route('/new')
     res.render('post/new')
   })
 
-//   router.get('/all', function (req, res) {
-//   Post.find({}, function (err, postArr) {
-//     res.render('post/all', {
-//       postArr: postArr,
-//     })
-//   })
-// })
+  router.route('/myphotos')
+    .get(reverseCheck, function (req, res) {
+     Post.find({
+     user_id: req.user._id
+  }, function(err, allPhotos) {
+    // console.log(allListings)
+    res.render('post/myphotos', {
+      user: req.user.name,
+      allPhotos: allPhotos,
+    })
+  })
+});
 
+router.delete('/myphotos/:id', function(req, res) {
+Post.findByIdAndRemove(req.params.id, function(err, allPosts){
+    if (err) { throw new Error (err)
+      // console.log("cannot delete")
+      res.render('/post/myphotos')
+    } else {
+      // console.log("deleted")
+      res.redirect('/post/myphotos')
+    }
+  })
+})
 
 router.get('/:id', function (req, res) {
   Post.findById(req.params.id)
@@ -55,49 +69,6 @@ router.get('/:id', function (req, res) {
 })
 
 
-
-
-
-
-// router.get('/:id', function(req, res) {
-//      Post.find({})
-//     .populate('user_id')
-//     // .populate('comment_id')
-//
-//         .exec(function(err, postArr) {
-//
-//           // console.log(postArr)
-//
-//         res.render('post/all', {
-//           postArr: postArr,
-//           // commentArr: commentArr
-//           // commentArr: commentArr
-//           // username:username,
-//         // })
-//       })
-//     })
-//   })
-
-//   router.get('/all', function (req, res) {
-//   Post.findAll({}, function (err, foundPost) {
-//     // console.log("lalallala")
-//     if (err) console.log(err)
-//     Comment.findAll({post_id : req.params.id}, function(err, commentArr){
-//       // console.log(commentArr)
-//       res.render('post/all', {
-//         commentArr: commentArr
-//       })
-//     })
-//   })
-// })
-
-// router.get('/:id', function (req, res) {
-//   res.render('post/all')
-// })
-
-// router.get('/:id', function (req, res) {
-//   res.redirect('/post/all')
-// })
 
 router.post('/new', function (req,res) {
     var newPost = new Post ({
@@ -119,26 +90,6 @@ router.post('/new', function (req,res) {
 
       })
    })
-
-  //  router.get('/:id', function(req, res) {
-  //       Comment.find({})
-  //      .populate('user_id')
-  //      // .populate('comment_id')
-   //
-  //          .exec(function(err, commentArr) {
-   //
-  //            // console.log(postArr)
-   //
-  //          res.render('post/all', {
-  //            commentArr: commentArr
-  //            // commentArr: commentArr
-  //            // username:username,
-  //          // })
-  //        })
-  //      })
-  //    })
-
-
 
    router.post('/:id', function (req,res) {
      var newComment = new Comment ({

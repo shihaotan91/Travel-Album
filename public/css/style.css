@@ -16,6 +16,10 @@
   background-color: black;
 }
 
+.welcome {
+  margin-left: 130px;
+}
+
 /*.allEach {
   margin-left: 132px;
   margin-left: auto;
@@ -238,6 +242,12 @@ margin-left: 480px;
 .center {
   /*padding: 0 100px;*/
   text-align: center;
+  list-style: none;
+}
+
+.deleteButton {
+  text-align: center;
+  padding: 10px
 }
 
 .country {

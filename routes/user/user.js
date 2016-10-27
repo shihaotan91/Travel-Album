@@ -70,6 +70,10 @@ router.get('/profile', function(req, res) {
   res.render('user/profile')
 })
 
+// router.get('/myphotos', function(req, res) {
+//   res.render('user/myphotos')
+// })
+
 router.get('/error', function(req, res) {
   res.render('user/error')
 })

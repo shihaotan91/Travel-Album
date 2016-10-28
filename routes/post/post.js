@@ -73,13 +73,24 @@ Post.findByIdAndRemove(req.params.id, function(err, allPosts){
 })
 
 //find photos by ID for edit function
-router.get('/:id/edit', function(req, res) {
-   Post.findById(req.params.id, function(err, foundPost) {
+// router.get('/:id/edit', function(req, res) {
+//
+//    Post.findById(req.params.id, function(err, foundPost) {
+//      res.render('post/edit', {
+//        foundPost: foundPost,
+//        user: req.user.name,
+//    })
+//  })
+// })
+
+router.route('/:id/edit')
+   .get(reverseCheck, function(req,res) {
+    Post.findById(req.params.id, function(err, foundPost) {
      res.render('post/edit', {
        foundPost: foundPost,
        user: req.user.name,
    })
- })
+  })
 })
 
 //find photos by ID for edit function
@@ -146,9 +157,7 @@ router.post('/new', function (req,res) {
        })
           console.log("test")
          res.redirect('/post/' + req.params.id)
-
          // console.log(req.user)
-
       })
 
 
